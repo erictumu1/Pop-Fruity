@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+/* Continuous leftward wave */
+@keyframes wave-slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-wave {
+  animation: wave-slide 6s linear infinite;
+}
