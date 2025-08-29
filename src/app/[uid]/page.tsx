@@ -6,13 +6,16 @@ import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import { PageDocument } from "../../../prismicio-types";
 
 type Params = { uid: string };
 
 export default async function Page({ params }: { params: Promise<Params> }) {
   const { uid } = await params;
   const client = createClient();
-  const page = await client.getByUID("page", uid).catch(() => notFound());
+  const page = await client
+    .getByUID<PageDocument>("page", uid)
+    .catch(() => notFound());
 
   // <SliceZone> renders the page's slices.
   return <SliceZone slices={page.data.slices} components={components} />;
@@ -27,12 +30,19 @@ export async function generateMetadata({
   const client = createClient();
   const page = await client.getByUID("page", uid).catch(() => notFound());
 
+  const data = page.data as unknown as {
+    title: any;
+    meta_title?: string;
+    meta_description?: string;
+    meta_image?: { url: string };
+  };
+
   return {
-    title: asText((page.data as any).title),
-    description: page.data.meta_description,
+    title: asText(data.title),
+    description: data.meta_description,
     openGraph: {
-      title: page.data.meta_title ?? undefined,
-      images: [{ url: page.data.meta_image.url ?? "" }],
+      title: data.meta_title ?? undefined,
+      images: [{ url: data.meta_image?.url ?? "" }],
     },
   };
 }
