@@ -1,6 +1,5 @@
 "use client";
 import { Bounded } from "@/components/Bounded";
-import Button from "@/components/Button";
 import { TextSplitter } from "@/components/TextSplitter";
 import { asText, Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
@@ -138,11 +137,11 @@ const Hero: FC<HeroProps> = ({ slice }) => {
               <PrismicRichText field={slice.primary.body} />
             </div>
 
-            <Button
+            {/* <Button
               buttonLink={slice.primary.button_link}
               buttonText={slice.primary.button_text}
               classname="hero-button mt-12"
-            />
+            /> */}
           </div>
         </div>
 
