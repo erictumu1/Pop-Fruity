@@ -11,7 +11,7 @@ const Loader = dynamic(
   { ssr: false },
 );
 
-type Props = {};
+type Props = Record<string, never>;
 
 export default function ViewCanvas({}: Props) {
   return (

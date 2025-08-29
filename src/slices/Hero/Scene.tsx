@@ -13,7 +13,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-type Props = {};
+type Props = Record<string, never>;
 
 export default function Scene({}: Props) {
   const isReady = useStore((state) => state.isReady);

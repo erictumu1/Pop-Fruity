@@ -1,6 +1,6 @@
 import { FizziLogo } from "./FizziLogo";
 
-type Props = {};
+type Props = Record<string, never>;
 
 export default function Header({}: Props) {
   return (
