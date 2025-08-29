@@ -6,6 +6,7 @@ import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import { RichTextField } from "@prismicio/client";
 import { PageDocument } from "../../../prismicio-types";
 
 type Params = { uid: string };
@@ -31,7 +32,7 @@ export async function generateMetadata({
   const page = await client.getByUID("page", uid).catch(() => notFound());
 
   const data = page.data as unknown as {
-    title: any;
+    title: RichTextField;
     meta_title?: string;
     meta_description?: string;
     meta_image?: { url: string };
