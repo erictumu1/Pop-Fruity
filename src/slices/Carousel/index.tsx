@@ -179,7 +179,7 @@ const Carousel: FC<CarouselProps> = ({ slice }) => {
 
       {/* Footer */}
       <footer
-        className="absolute bottom-0 w-full py-8 text-center transition-colors duration-500"
+        className="absolute bottom-0 w-full py-8 text-center transition-colors duration-500 lg:py-6"
         style={{
           backgroundColor: FLAVORS[currentIndex].color, // Footer background color
         }}
